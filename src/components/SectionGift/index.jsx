@@ -1,7 +1,14 @@
 import React, { useState , useEffect } from 'react'
+import KirimDana from './KirimDana';
+import KirimHadiah from './KirimHadiah';
+import KirimPesan from './KirimPesan';
 
 const SectionGift = () => {
-  // const [expiryTime, setExpiryTime] = useState("21 jun 2023 04:08:50");
+  const [isOpen, setIsOpen] = useState({
+    pesan: false,
+    dana: false,
+    hadiah: false
+  })
   const [expiryTime, setExpiryTime] = useState("8 jul 2023 09:00:00");
   const [countdownTime, setCountdownTime]= useState({
     days: '',
@@ -48,7 +55,6 @@ const SectionGift = () => {
 
     return () => clearInterval(runTimeInterval)
   });
-
 
   return (
     <section id="sectionGift">
@@ -108,15 +114,29 @@ const SectionGift = () => {
               </p>
 
               <div className="flex flex-col gap-4 items-center mt-4">
-                <button className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'>
+                <button
+                  onClick={() => setIsOpen({...isOpen, pesan: true})}
+                  className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'
+                >
                   KIRIM PESAN
                 </button>
-                <button className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'>
+                { isOpen.pesan && <KirimPesan isOpen={isOpen} setIsOpen={setIsOpen} />}
+                
+                <button
+                  onClick={() => setIsOpen({...isOpen, dana: true})}
+                  className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'
+                >
                   Kirim Dana
                 </button>
-                <button className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'>
+                { isOpen.dana && <KirimDana isOpen={isOpen} setIsOpen={setIsOpen} />}
+
+                <button
+                  onClick={() => setIsOpen({...isOpen, hadiah: true})}
+                  className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'
+                >
                   KIRIM Hadiah
                 </button>
+                { isOpen.hadiah && <KirimHadiah isOpen={isOpen} setIsOpen={setIsOpen} />}
               </div>
             </div>
           </div>

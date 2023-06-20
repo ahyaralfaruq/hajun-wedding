@@ -24,3 +24,10 @@ body {
   font-family: "philosopher";
   src: url("/public/assets/fonts/Philosopher/Philosopher-Regular.ttf");
 }
+
+.background-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  transition: all .25s ease-in-out 0s;
+}
