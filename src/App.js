@@ -22,6 +22,7 @@ function App() {
       {/* section wedding location */}
       <SectionLocations />
       {/* section photos */}
+      <SectionPhotos />
       {/* section send gift */}
     </div>
   );
