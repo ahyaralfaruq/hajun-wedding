@@ -1,0 +1,14 @@
+.myBackground {
+  background: url("/public/assets/Images/background.JPG");
+  background-position: center center;
+  background-size: cover;
+}
+.myBackground > div {
+  min-height: 859px;
+}
+
+@media (max-width: 767px) {
+  .myBackground > div {
+    min-height: 485px;
+  }
+}
