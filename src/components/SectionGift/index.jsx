@@ -1,6 +1,55 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 
 const SectionGift = () => {
+  // const [expiryTime, setExpiryTime] = useState("21 jun 2023 04:08:50");
+  const [expiryTime, setExpiryTime] = useState("8 jul 2023 09:00:00");
+  const [countdownTime, setCountdownTime]= useState({
+    days: '',
+    hours: '',
+    minutes: '',
+    seconds: ''
+  })
+
+  const runTimeInterval = () => {
+    const timeInterval = setInterval(() => {
+      const countdownDateTime = new Date(expiryTime).getTime(); 
+      const currentTime = new Date().getTime();
+      const remainingDayTime = countdownDateTime - currentTime;
+      const totalDays = Math.floor(remainingDayTime / (1000 * 60 * 60 * 24));
+      const totalHours = Math.floor((remainingDayTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const totalMinutes = Math.floor((remainingDayTime % (1000 * 60 * 60)) / (1000 * 60));
+      const totalSeconds = Math.floor((remainingDayTime % (1000 * 60)) / 1000);
+  
+      const runningCountdownTime={
+          days: totalDays,
+          hours: totalHours,
+          minutes: totalMinutes,
+          seconds: totalSeconds
+      }
+      
+      setCountdownTime(runningCountdownTime);
+
+      if(remainingDayTime < 0) {
+        clearInterval(timeInterval);
+        setCountdownTime({
+          days: "00",
+          hours: "00",
+          minutes: "00",
+          seconds: "00"
+        });
+        setExpiryTime(false);
+      }
+
+    }, 1000);
+  }
+    
+  useEffect(() => {
+    runTimeInterval()
+
+    return () => clearInterval(runTimeInterval)
+  });
+
+
   return (
     <section id="sectionGift">
       <div className="md:p-16 sm:py-8 sm:px-4 bg-swanWhite">
@@ -19,19 +68,27 @@ const SectionGift = () => {
 
               <div className="grid grid-cols-4 gap-2 mt-4">
                 <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">00</h2>
+                  <h2 className="text-4xl text-center text-white">
+                    {countdownTime.days}
+                  </h2>
                   <p className="text-xs text-center font-bold text-white">Days</p>
                 </div>
                 <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">00</h2>
+                  <h2 className="text-4xl text-center text-white">
+                    {countdownTime.hours}
+                  </h2>
                   <p className="text-xs text-center font-bold text-white">Hour</p>
                 </div>
                 <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">00</h2>
+                  <h2 className="text-4xl text-center text-white">
+                    {countdownTime.minutes}
+                  </h2>
                   <p className="text-xs text-center font-bold text-white">Minutes</p>
                 </div>
                 <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">00</h2>
+                  <h2 className="text-4xl text-center text-white">
+                    {countdownTime.seconds}
+                  </h2>
                   <p className="text-xs text-center font-bold text-white">Seconds</p>
                 </div>
               </div>
