@@ -11,7 +11,7 @@ const SectionLocations = () => {
   return (
     <section id="location">
       <div className="myBackground2 mb:p-16 sm:py-8 sm:px-4">
-        <div className='bg-white opacity-70 flex flex-col items-center py-4 px-4 rounded-3xl'>
+        <div className='wrapping-overlay flex flex-col items-center py-4 px-4 rounded-3xl'>
           <h3 className='mb-4 font-normal text-2xl text-center'>Pelaksanaan Acara</h3>
           <p className="text-base text-center mb-8">
             Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
