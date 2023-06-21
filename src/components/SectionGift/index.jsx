@@ -17,44 +17,45 @@ const SectionGift = () => {
     seconds: ''
   })
 
-  const runTimeInterval = () => {
-    const timeInterval = setInterval(() => {
-      const countdownDateTime = new Date(expiryTime).getTime(); 
-      const currentTime = new Date().getTime();
-      const remainingDayTime = countdownDateTime - currentTime;
-      const totalDays = Math.floor(remainingDayTime / (1000 * 60 * 60 * 24));
-      const totalHours = Math.floor((remainingDayTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const totalMinutes = Math.floor((remainingDayTime % (1000 * 60 * 60)) / (1000 * 60));
-      const totalSeconds = Math.floor((remainingDayTime % (1000 * 60)) / 1000);
   
-      const runningCountdownTime={
-          days: totalDays,
-          hours: totalHours,
-          minutes: totalMinutes,
-          seconds: totalSeconds
-      }
-      
-      setCountdownTime(runningCountdownTime);
-
-      if(remainingDayTime < 0) {
-        clearInterval(timeInterval);
-        setCountdownTime({
-          days: "00",
-          hours: "00",
-          minutes: "00",
-          seconds: "00"
-        });
-        setExpiryTime(false);
-      }
-
-    }, 1000);
-  }
     
   useEffect(() => {
+    const runTimeInterval = () => {
+      const timeInterval = setInterval(() => {
+        const countdownDateTime = new Date(expiryTime).getTime(); 
+        const currentTime = new Date().getTime();
+        const remainingDayTime = countdownDateTime - currentTime;
+        const totalDays = Math.floor(remainingDayTime / (1000 * 60 * 60 * 24));
+        const totalHours = Math.floor((remainingDayTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const totalMinutes = Math.floor((remainingDayTime % (1000 * 60 * 60)) / (1000 * 60));
+        const totalSeconds = Math.floor((remainingDayTime % (1000 * 60)) / 1000);
+    
+        const runningCountdownTime={
+            days: totalDays,
+            hours: totalHours,
+            minutes: totalMinutes,
+            seconds: totalSeconds
+        }
+        
+        setCountdownTime(runningCountdownTime);
+  
+        if(remainingDayTime < 0) {
+          clearInterval(timeInterval);
+          setCountdownTime({
+            days: "00",
+            hours: "00",
+            minutes: "00",
+            seconds: "00"
+          });
+          setExpiryTime(false);
+        }
+  
+      }, 1000);
+    }
     runTimeInterval()
 
     return () => clearInterval(runTimeInterval)
-  });
+  }, [countdownTime, expiryTime]);
 
   return (
     <section id="sectionGift">

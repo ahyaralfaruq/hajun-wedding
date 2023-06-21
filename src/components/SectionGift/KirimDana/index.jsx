@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { FaCopy, FaMoneyCheck } from 'react-icons/fa'
 
 const KirimDana = ({ isOpen, setIsOpen }) => {
   const brideRek = "4730677818"
 
-  const handleCopyRek = (norek) => {
+  const handleCopyRek = useCallback((norek) => {
     return navigator.clipboard.writeText(norek)
-  }
-
+  }, [])
+  
   return (
     <div className='background-overlay fixed z-10 inset-0 overflow-hidden flex items-center justify-center py-8 px-4'>
       <div className="xl:w-3/6 md:w-4/5 sm:w-full sm:h-full relative bg-white rounded-md flex justify-center items-center">
