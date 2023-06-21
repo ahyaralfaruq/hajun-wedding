@@ -1,4 +1,4 @@
-import React, { useState , useEffect, useMemo } from 'react'
+import React, { useState , useEffect } from 'react'
 import KirimDana from './KirimDana';
 import KirimHadiah from './KirimHadiah';
 import KirimPesan from './KirimPesan';
@@ -17,12 +17,7 @@ const SectionGift = () => {
     seconds: ''
   })
 
-  const memoizeData = useMemo(() => ({
-    days : countdownTime.days,
-    hours : countdownTime.hours,
-    minutes : countdownTime.minutes,
-    seconds : countdownTime.seconds
-  }), [countdownTime.days,countdownTime.hours,countdownTime.minutes,countdownTime.seconds])
+  
     
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -57,7 +52,7 @@ const SectionGift = () => {
     }, 1000)
 
     return () => clearInterval(timeInterval)
-  }, [memoizeData, expiryTime]);
+  }, [countdownTime, expiryTime]);
 
   return (
     <section id="sectionGift">
