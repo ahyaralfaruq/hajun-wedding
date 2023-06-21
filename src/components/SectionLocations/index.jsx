@@ -5,10 +5,6 @@ import "./style.css"
 
 const SectionLocations = () => {
 
-  const handleClickAkad = () => {
-    window.location = "https://www.google.com/maps/dir/Jl.+Pancawarna,+Curug,+Kec.+Gn.+Sindur,+Kabupaten+Bogor,+Jawa+Barat+16340//@-6.3744912,106.7094622,14z/data=!4m7!4m6!1m2!1m1!1s0x2e69e61d1cbadbad:0x468012369c455730!1m1!4e2!3e3"
-  }
-
   return (
     <section id="location">
       <div className="myBackground2 mb:p-16 sm:py-8 sm:px-4">
@@ -38,9 +34,6 @@ const SectionLocations = () => {
                     Kab. Bogor, Jawa Barat
                   </p>
 
-                  {/* <button onClick={handleClickAkad} className='bg-swanWhite border-none outline-none rounded-md w-full'>
-                    Lihat Lokasi
-                  </button> */}
                 </div>
             </div>
 
