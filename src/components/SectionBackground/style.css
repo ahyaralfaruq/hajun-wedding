@@ -4,9 +4,14 @@
   background-size: cover;
 }
 .myBackground > div {
-  min-height: 859px;
+  min-height: 1192px;
 }
 
+@media (max-width:  1024px) {
+  .myBackground > div {
+    min-height: 815px;
+  }
+}
 @media (max-width: 767px) {
   .myBackground > div {
     min-height: 485px;

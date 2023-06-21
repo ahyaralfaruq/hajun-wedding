@@ -65,37 +65,37 @@ const SectionGift = () => {
               <img src="/assets/images/3.jpg" alt="gambar" className='w-full h-full object-cover' />
             </div>
             
-            <div className="flex flex-col items-center bg-white py-4 px-3">
-              <h4 className="text-2xl font-karla font-semibold mb-8">Menuju Hari Bahagia</h4>
-              <p className="text-base text-center font-karla">
+            <div className="flex flex-col items-center bg-white py-4 px-3 grow">
+              <h4 className="xl:text-2xl md:text-xl sm:text-lg font-karla font-semibold mb-8">Menuju Hari Bahagia</h4>
+              <p className="xl:text-lg sm:text-base text-center font-karla">
                 Kami begitu antusias untuk menyambut hari bahagia pernikahan.
                 Ini adalah awal perjalanan kami untuk mewujudkan mimpi berdua.
               </p>
 
-              <div className="grid grid-cols-4 gap-2 mt-4">
-                <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">
+              <div className="grid grid-cols-4 xl:gap-4 sm:gap-2 my-auto pt-12 xl:w-4/6 sm:w-full">
+                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
+                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
                     {countdownTime.days}
                   </h2>
-                  <p className="text-xs text-center font-bold text-white">Days</p>
+                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Days</p>
                 </div>
-                <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">
+                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
+                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
                     {countdownTime.hours}
                   </h2>
-                  <p className="text-xs text-center font-bold text-white">Hour</p>
+                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Hours</p>
                 </div>
-                <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">
+                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
+                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
                     {countdownTime.minutes}
                   </h2>
-                  <p className="text-xs text-center font-bold text-white">Minutes</p>
+                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Minutes</p>
                 </div>
-                <div className="w-full bg-swanWhite p-2 rounded-sm">
-                  <h2 className="text-4xl text-center text-white">
+                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
+                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
                     {countdownTime.seconds}
                   </h2>
-                  <p className="text-xs text-center font-bold text-white">Seconds</p>
+                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Seconds</p>
                 </div>
               </div>
             </div>
@@ -107,16 +107,16 @@ const SectionGift = () => {
             </div>
             
             <div className="flex flex-col items-center bg-white py-4 px-3">
-              <h4 className="text-2xl font-karla font-semibold mb-8">Sampaikan Salam</h4>
-              <p className="text-base text-center font-karla">
+              <h4 className="xl:text-2xl md:text-xl sm:text-lg font-karla font-semibold mb-8">Sampaikan Salam</h4>
+              <p className="xl:text-lg sm:text-base text-center font-karla">
                 Kami mengerti tidak semua keluarga dan teman berkesempatan untuk hadir di acara pernikahan kami.
                 Untuk itu, bagi kerabat yang ingin mengirimkan salam atau hadiah silahkan ketuk tombol berikut:
               </p>
 
-              <div className="flex flex-col gap-4 items-center mt-4">
+              <div className="flex flex-col gap-4 items-center  pt-12 xl:w-4/6 sm:w-full">
                 <button
                   onClick={() => setIsOpen({...isOpen, pesan: true})}
-                  className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'
+                  className='font-karla font-semibold xl:text-lg sm:text-base w-full bg-gray-500 text-white px-4 py-2 rounded-full'
                 >
                   KIRIM PESAN
                 </button>
@@ -124,17 +124,17 @@ const SectionGift = () => {
                 
                 <button
                   onClick={() => setIsOpen({...isOpen, dana: true})}
-                  className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'
+                  className='font-karla font-semibold xl:text-lg sm:text-base w-full bg-gray-500 text-white px-4 py-2 rounded-full'
                 >
-                  Kirim Dana
+                  KIRIM DANA
                 </button>
                 { isOpen.dana && <KirimDana isOpen={isOpen} setIsOpen={setIsOpen} />}
 
                 <button
                   onClick={() => setIsOpen({...isOpen, hadiah: true})}
-                  className='font-karla font-semibold text-sm bg-gray-500 text-white px-4 py-2 rounded-full'
+                  className='font-karla font-semibold xl:text-lg sm:text-base w-full bg-gray-500 text-white px-4 py-2 rounded-full'
                 >
-                  KIRIM Hadiah
+                  KIRIM HADIAH
                 </button>
                 { isOpen.hadiah && <KirimHadiah isOpen={isOpen} setIsOpen={setIsOpen} />}
               </div>

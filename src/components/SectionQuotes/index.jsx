@@ -4,13 +4,13 @@ const SectionQuotes = () => {
   return (
     <section id="sectionQuotes">
       <div className="md:p-16 sm:py-16 sm:px-8">
-        <h3 className="text-lg font-normal font-semibold text-center mb-12">QUOTES</h3>
-        <p className="text-base text-center mb-6 italic">
+        <h3 className="xl:text-2xl md:text-xl sm:text-lg font-normal font-semibold text-center mb-12">QUOTES</h3>
+        <p className="xl:text-lg sm:text-base text-center mb-6 italic">
           "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri,
           agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.
           Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir".
         </p>
-          <p className='text-center font-semibold font-karla text-base italic'>(QS. Ar Rum ayat 21)</p>
+          <p className='text-center font-semibold font-karla xl:text-lg sm:text-base italic'>(QS. Ar Rum ayat 21)</p>
       </div>
     </section>
   )

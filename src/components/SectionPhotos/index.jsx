@@ -5,9 +5,9 @@ const SectionPhotos = () => {
   return (
     <section id="sectionAlbum">
       <div className="md:p-16 sm:py-8 sm:px-4">
-        <h3 className='mb-12 font-normal text-2xl text-center'>Gallery</h3>
+        <h3 className='mb-12 font-normal xl:text-2xl md:text-xl sm:text-lg text-center'>Gallery</h3>
 
-        <div className="grid xl:grid-cols-8 xl:gap-2 md:grid-cols-4 sm:grid-cols-2 sm:gap-4">
+        <div className="grid xl:grid-cols-4 xl:gap-4 md:grid-cols-3 sm:grid-cols-2 sm:gap-4">
           {
             ImageData.map(res => (
               <div className="w-full overflow-hidden rounded-md" key={res.id}>
