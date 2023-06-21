@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import ImageData from "../../utils/images"
 
 const SectionPhotos = () => {
@@ -21,4 +21,4 @@ const SectionPhotos = () => {
   )
 }
 
-export default SectionPhotos
+export default memo(SectionPhotos)

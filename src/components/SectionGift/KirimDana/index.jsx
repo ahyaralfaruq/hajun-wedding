@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react'
+import React, { memo, useCallback } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { FaCopy, FaMoneyCheck } from 'react-icons/fa'
 
-const KirimDana = ({ isOpen, setIsOpen }) => {
+const KirimDana = memo(({ isOpen, setIsOpen }) => {
   const brideRek = "4730677818"
 
   const handleCopyRek = useCallback((norek) => {
@@ -42,6 +42,6 @@ const KirimDana = ({ isOpen, setIsOpen }) => {
       </div>
     </div>
   )
-}
+})
 
 export default KirimDana

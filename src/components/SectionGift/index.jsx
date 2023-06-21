@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState , useEffect, useCallback } from 'react'
 import KirimDana from './KirimDana';
 import KirimHadiah from './KirimHadiah';
 import KirimPesan from './KirimPesan';
@@ -17,7 +17,9 @@ const SectionGift = () => {
     seconds: ''
   })
 
-  
+  const handlePesan = useCallback(() => setIsOpen({...isOpen, pesan: true}), [isOpen])
+  const handleDana = useCallback(() => setIsOpen({...isOpen, dana: true}), [isOpen])
+  const handleHadiah = useCallback(() => setIsOpen({...isOpen, hadiah: true}), [isOpen])
     
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -113,7 +115,7 @@ const SectionGift = () => {
 
               <div className="flex flex-col gap-4 items-center  pt-12 xl:w-4/6 sm:w-full">
                 <button
-                  onClick={() => setIsOpen({...isOpen, pesan: true})}
+                  onClick={handlePesan}
                   className='font-karla font-semibold xl:text-lg sm:text-base w-full bg-gray-500 text-white px-4 py-2 rounded-full'
                 >
                   KIRIM PESAN
@@ -121,7 +123,7 @@ const SectionGift = () => {
                 { isOpen.pesan && <KirimPesan isOpen={isOpen} setIsOpen={setIsOpen} />}
                 
                 <button
-                  onClick={() => setIsOpen({...isOpen, dana: true})}
+                  onClick={handleDana}
                   className='font-karla font-semibold xl:text-lg sm:text-base w-full bg-gray-500 text-white px-4 py-2 rounded-full'
                 >
                   KIRIM DANA
@@ -129,7 +131,7 @@ const SectionGift = () => {
                 { isOpen.dana && <KirimDana isOpen={isOpen} setIsOpen={setIsOpen} />}
 
                 <button
-                  onClick={() => setIsOpen({...isOpen, hadiah: true})}
+                  onClick={handleHadiah}
                   className='font-karla font-semibold xl:text-lg sm:text-base w-full bg-gray-500 text-white px-4 py-2 rounded-full'
                 >
                   KIRIM HADIAH
