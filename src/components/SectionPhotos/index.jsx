@@ -9,8 +9,8 @@ const SectionPhotos = () => {
 
         <div className="grid xl:grid-cols-4 xl:gap-4 md:grid-cols-3 sm:grid-cols-2 sm:gap-4">
           {
-            ImageData.map(res => (
-              <div className="w-full overflow-hidden rounded-md" key={res.id}>
+            ImageData.map((res, index) => (
+              <div className="w-full overflow-hidden rounded-md" key={index}>
                 <img src={res.src} alt="gambar" className='w-full object-cover' />
               </div>
             ))

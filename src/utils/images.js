@@ -1,4 +1,4 @@
-const ImagesData = [
+export const ImagesData = [
   {
     id: 1,
     src: "assets/images/background.JPG"
