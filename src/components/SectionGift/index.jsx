@@ -1,4 +1,4 @@
-import React, { useState , useEffect, useCallback } from 'react'
+import React, { useState , useEffect, useCallback, useMemo } from 'react'
 import KirimDana from './KirimDana';
 import KirimHadiah from './KirimHadiah';
 import KirimPesan from './KirimPesan';
@@ -16,6 +16,13 @@ const SectionGift = () => {
     minutes: '',
     seconds: ''
   })
+
+  const countdown = useMemo(() => ({
+    days: countdownTime.days,
+    hours: countdownTime.hours,
+    minutes: countdownTime.minutes,
+    seconds: countdownTime.seconds
+  }), [countdownTime.days, countdownTime.hours, countdownTime.minutes, countdownTime.seconds])
 
   const handlePesan = useCallback(() => setIsOpen({...isOpen, pesan: true}), [isOpen])
   const handleDana = useCallback(() => setIsOpen({...isOpen, dana: true}), [isOpen])
@@ -54,7 +61,7 @@ const SectionGift = () => {
     }, 1000)
 
     return () => clearInterval(timeInterval)
-  }, [countdownTime, expiryTime]);
+  }, [countdown, expiryTime]);
 
   return (
     <section id="sectionGift">
