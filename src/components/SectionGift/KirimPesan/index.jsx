@@ -7,6 +7,11 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
     nama: "",
     message: ""
   })
+  const [isSend, setIsSend] = useState(false)
+  const [isError, setIsError] = useState({
+    status : false,
+    message : "",
+  })
 
   useMemo(() => ({
     nama: pesan.nama,
@@ -32,11 +37,26 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
           nama : "",
           message: ""
         }))
+
+        setIsSend(true)
+        setIsError(p => ({
+          ...p,
+          status : false,
+          message : "Thank you ! Pesan kamu sudah terkirim ya"
+        }))
         
       }, function(err) {
         console.log('FAILED...', err);
+
+        setIsSend(true)
+        setIsError(p => ({
+          ...p,
+          status : false,
+          message : "Oh tidak ! telah terjadi kesalahan. maaf ya :("
+        }))
       });
     }
+    setIsSend(false)
     
   }, [pesan.nama, pesan.message])
 
@@ -55,6 +75,11 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
           <h4 className="xl:text-2xl md:text-xl sm:text-lg font-semibold mb-16 pl-4 pt-4">Kirim Pesan</h4>
 
           <div className="px-4 pb-4">
+            {
+              isSend && <p className={`p-2 text-center text-normal font-semibold bg-${isError ? "red-500" : "green-500"} text-base`}>
+                {isError.message}
+              </p>
+            }
             <label htmlFor="nama" className='xl:text-lg sm:text-base font-normal block mb-2'>Nama:</label>
             <div className="bg-white w-full h-9 overflow-hidden shadow-sm">
               <input 
