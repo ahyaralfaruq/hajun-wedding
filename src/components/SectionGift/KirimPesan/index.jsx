@@ -46,12 +46,12 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
         }))
         
       }, function(err) {
-        console.log('FAILED...', err);
+        // console.log('FAILED...', err);
 
         setIsSend(true)
         setIsError(p => ({
           ...p,
-          status : false,
+          status : true,
           message : "Oh tidak ! telah terjadi kesalahan. maaf ya :("
         }))
       });
@@ -76,7 +76,7 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
 
           <div className="px-4 pb-4">
             {
-              isSend && <p className={`p-2 text-center text-normal font-semibold bg-${isError ? "red-500" : "green-500"} text-base`}>
+              isSend && <p className={`p-2 text-center text-normal font-semibold ${isError ? "bg-red-500" : "bg-green-500"} text-base`}>
                 {isError.message}
               </p>
             }
