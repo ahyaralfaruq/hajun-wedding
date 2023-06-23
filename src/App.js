@@ -4,7 +4,7 @@ import {
   SectionQuotes,
   SectionGroom,
   SectionLocations,
-  SectionGift,
+  // SectionGift,
   SectionPhotos,
 } from './components';
 
