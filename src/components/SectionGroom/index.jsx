@@ -20,7 +20,7 @@ const SectionGroom = () => {
           >
             <div className="relative w-60 h-60">
               <div className="absolute w-full h-full top-0 left-0 rounded-full overflow-hidden">
-                <img src="/assets/images/groom.jpg" alt="gambar" className='w-full h-full object-cover' />
+                <img src="/assets/images/groom.JPG" alt="gambar" className='w-full h-full object-cover' />
               </div>
             </div>
             <div className="py-6">
@@ -32,7 +32,7 @@ const SectionGroom = () => {
             </div>
             <div className="my-auto">
               <a href="http://instagram.com/fadhli.zaini" target="_blank" rel="noopener noreferrer"
-                className='inline-block p-3 rounded-full cursor-pointer bg-swanWhite'
+                className='inline-block p-3 rounded-full cursor-pointer bg-gray-500'
               >
                 <BsInstagram className='text-white text-lg' />
               </a>
@@ -47,7 +47,7 @@ const SectionGroom = () => {
           >
             <div className="relative w-60 h-60">
               <div className="absolute w-full h-full top-0 left-0 rounded-full overflow-hidden">
-                <img src="/assets/images/bride.jpg" alt="gambar" className='w-full h-full object-cover' />
+                <img src="/assets/images/bride.JPG" alt="gambar" className='w-full h-full object-cover' />
               </div>
             </div>
             <div className="py-6">
@@ -59,7 +59,7 @@ const SectionGroom = () => {
             </div>
             <div className="my-auto">
               <a href="http://instagram.com/indah.lstr" target="_blank" rel="noopener noreferrer"
-                className='inline-block p-3 rounded-full cursor-pointer bg-swanWhite'
+                className='inline-block p-3 rounded-full cursor-pointer bg-gray-500'
               >
                 <BsInstagram className='text-white text-lg' />
               </a>

@@ -1,5 +1,6 @@
-import React, { memo } from 'react'
-import ImagesData from "../../utils/images"
+import React, { lazy, memo, Suspense } from 'react'
+
+const GetImages = lazy(() => import('./LazyLoad'))
 
 const SectionPhotos = () => {
 
@@ -9,13 +10,9 @@ const SectionPhotos = () => {
         <h3 className='mb-12 font-normal xl:text-2xl md:text-xl sm:text-lg text-center'>Gallery</h3>
 
         <div className="grid xl:grid-cols-4 xl:gap-4 md:grid-cols-3 sm:grid-cols-2 sm:gap-4">
-          {
-            ImagesData.map( res => (
-              <div className="w-full overflow-hidden rounded-md" key={res.id}>
-                <img src={res.src} alt="gambar" className='w-full object-cover' />
-              </div>
-            ))
-          }
+          <Suspense fallback={<div className='text-center'>Loading...</div>}>
+            <GetImages />
+          </Suspense>
         </div>
       </div>
     </section>
