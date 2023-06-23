@@ -4,7 +4,7 @@ import {
   SectionQuotes,
   SectionGroom,
   SectionLocations,
-  // SectionGift,
+  SectionGift,
   SectionPhotos,
 } from './components';
 
@@ -24,7 +24,7 @@ function App() {
       {/* section photos */}
       <SectionPhotos />
       {/* section send gift */}
-      {/* <SectionGift /> */}
+      <SectionGift />
     </div>
   );
 }
