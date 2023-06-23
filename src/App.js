@@ -24,7 +24,7 @@ function App() {
       {/* section photos */}
       <SectionPhotos />
       {/* section send gift */}
-      <SectionGift />
+      {/* <SectionGift /> */}
     </div>
   );
 }
