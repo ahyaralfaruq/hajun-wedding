@@ -1,5 +1,8 @@
 import React from 'react'
 import { BsInstagram } from "react-icons/bs"
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const SectionGroom = () => {
   return (
@@ -20,7 +23,8 @@ const SectionGroom = () => {
           >
             <div className="relative w-60 h-60">
               <div className="absolute w-full h-full top-0 left-0 rounded-full overflow-hidden">
-                <img src="/assets/images/groom.JPG" alt="gambar" className='w-full h-full object-cover' />
+                <LazyLoadImage src='/assets/images/groom.JPG' alt='gambar' className='w-full h-full object-cover' effect='blur' />
+                {/* <img src="/assets/images/groom.JPG" alt="gambar" className='w-full h-full object-cover' /> */}
               </div>
             </div>
             <div className="py-6">
@@ -47,7 +51,8 @@ const SectionGroom = () => {
           >
             <div className="relative w-60 h-60">
               <div className="absolute w-full h-full top-0 left-0 rounded-full overflow-hidden">
-                <img src="/assets/images/bride.JPG" alt="gambar" className='w-full h-full object-cover' />
+              <LazyLoadImage src='/assets/images/bride.JPG' alt='gambar' className='w-full h-full object-cover' effect='blur' />
+                {/* <img src="/assets/images/bride.JPG" alt="gambar" className='w-full h-full object-cover' /> */}
               </div>
             </div>
             <div className="py-6">
