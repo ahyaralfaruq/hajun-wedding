@@ -37,7 +37,7 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
         console.log('FAILED...', err);
       });
     }
-    console.log(pesan.nama)
+    
   }, [pesan.nama, pesan.message])
 
 
