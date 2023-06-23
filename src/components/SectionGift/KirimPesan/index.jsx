@@ -1,5 +1,6 @@
-import React, { memo, useCallback, useState } from 'react'
+import React, { memo, useCallback, useMemo, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
+import emailjs from '@emailjs/browser';
 
 const KirimPesan = memo(({ isOpen, setIsOpen }) => {
   const [pesan, setPesan] = useState({
@@ -7,13 +8,37 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
     message: ""
   })
 
+  useMemo(() => ({
+    nama: pesan.nama,
+    message: pesan.message
+  }), [pesan.nama, pesan.message])
+
   const handleSubmit = useCallback((e) => {
     e.preventDefault()
 
     if(pesan.nama.trim() && pesan.message.trim()) {
-      console.log(pesan.nama)
+
+      const templateParams = {
+        from_name : pesan.nama,
+        message : pesan.message
+      }
+
+      emailjs.send(process.env.REACT_APP_USER_ID, process.env.REACT_APP_TEMPLATE_ID, templateParams, process.env.REACT_APP_PUBLIC_KEY)
+      .then(function(response) {
+        // console.log('SUCCESS!', response.status, response.text);
+
+        setPesan(p => ({
+          ...p,
+          nama : "",
+          message: ""
+        }))
+        
+      }, function(err) {
+        console.log('FAILED...', err);
+      });
     }
-  }, [pesan])
+    console.log(pesan.nama)
+  }, [pesan.nama, pesan.message])
 
 
   return (
