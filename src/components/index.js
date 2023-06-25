@@ -5,6 +5,7 @@ import SectionLocations from "./SectionLocations";
 import SectionGift from "./SectionGift";
 import SectionPhotos from "./SectionPhotos";
 import SectionCountdown from "./SectionCountdown";
+import SectionSong from "./SectionSong";
 
 export {
     SectionBackground,
@@ -14,4 +15,5 @@ export {
     SectionGift,
     SectionPhotos,
     SectionCountdown,
+    SectionSong,
 }

@@ -7,6 +7,7 @@ import {
   // SectionGift,
   SectionPhotos,
   SectionCountdown,
+  SectionSong,
 } from './components';
 
 import './App.css';
@@ -14,6 +15,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <SectionSong />
       {/* section background wedding invitation */}
       <SectionBackground />
 
