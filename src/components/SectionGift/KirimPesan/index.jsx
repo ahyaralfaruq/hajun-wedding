@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import emailjs from '@emailjs/browser';
 
-const KirimPesan = memo(({ isOpen, setIsOpen }) => {
+const KirimPesan = ({ setIsOpen }) => {
   const [pesan, setPesan] = useState({
     nama: "",
     message: ""
@@ -13,12 +13,7 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
     message : "",
   })
 
-  useMemo(() => ({
-    nama: pesan.nama,
-    message: pesan.message
-  }), [pesan.nama, pesan.message])
-
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = e => {
     e.preventDefault()
 
     if(pesan.nama.trim() && pesan.message.trim()) {
@@ -56,16 +51,16 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
         }))
       });
     }
-    setIsSend(false)
     
-  }, [pesan.nama, pesan.message])
+    setIsSend(false)
+  }
 
 
   return (
     <div className='background-overlay fixed z-10 inset-0 overflow-hidden flex items-center justify-center py-8 px-4'>
       <div className="xl:w-3/6 md:w-4/5 sm:w-full sm:h-full relative bg-white rounded-md">
         <button
-          onClick={() => setIsOpen({...isOpen, pesan : false})}
+          onClick={() => setIsOpen(false)}
           className='absolute right-0 top-0 p-2 m-2 bg-white text-black text-lg font-bold'
         >
           <IoMdClose className='xl:text-2xl md:text-xl sm:text-lg text-black' />
@@ -80,7 +75,7 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
                 {isError.message}
               </p>
             }
-            <label htmlFor="nama" className='xl:text-lg sm:text-base font-normal block mb-2'>Nama:</label>
+            <label htmlFor="nama" className='xl:text-lg sm:text-base block mb-2'>Nama:</label>
             <div className="bg-white w-full h-9 overflow-hidden shadow-sm">
               <input 
                 type="text" 
@@ -93,7 +88,7 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
             </div>
           </div>
           <div className="px-4 pb-4">
-            <label htmlFor="pesan" className='xl:text-lg sm:text-base font-normal block mb-2'>Pesan :</label>
+            <label htmlFor="pesan" className='xl:text-lg sm:text-base block mb-2'>Pesan :</label>
             <div className="bg-white w-full overflow-hidden shadow-sm">
               <textarea
                 rows={8}
@@ -114,6 +109,6 @@ const KirimPesan = memo(({ isOpen, setIsOpen }) => {
       </div>
     </div>
   )
-})
+}
 
 export default KirimPesan

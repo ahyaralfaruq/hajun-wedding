@@ -10,7 +10,7 @@ module.exports = {
             fontFamily: {
                 'greatVibes': ['greatvibes', 'sans-serif'],
                 'karla': ['karla', 'sans-serif'],
-                "normal" : ["philosopher", "sans-serif"]
+                "philosopher" : ["philosopher", "sans-serif"]
             },
             screens: {
                 "sm" : "320px",

@@ -1,13 +1,13 @@
-import React, { memo, useCallback } from 'react'
+import React from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { FaCopy, FaMoneyCheck } from 'react-icons/fa'
 
-const KirimDana = memo(({ isOpen, setIsOpen }) => {
+const KirimDana = ({ isOpen, setIsOpen }) => {
   const brideRek = "4730677818"
 
-  const handleCopyRek = useCallback((norek) => {
+  const handleCopyRek = norek => {
     return navigator.clipboard.writeText(norek)
-  }, [])
+  }
   
   return (
     <div className='background-overlay fixed z-10 inset-0 overflow-hidden flex items-center justify-center py-8 px-4'>
@@ -42,6 +42,6 @@ const KirimDana = memo(({ isOpen, setIsOpen }) => {
       </div>
     </div>
   )
-})
+}
 
 export default KirimDana

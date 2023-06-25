@@ -1,14 +1,14 @@
-import React, { useCallback, memo } from 'react'
+import React from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { FaCopy } from 'react-icons/fa'
 import { BsBoxFill } from 'react-icons/bs'
 
-const KirimHadiah = memo(({ isOpen, setIsOpen }) => {
+const KirimHadiah = ({ isOpen, setIsOpen }) => {
   const alamatHadiah = "Jl. Permata, Gg. Pancawarna I A, RT.005/004, Desa Curug, Kec. Gunung Sindur Kab. Bogor, Jawa Barat"
 
-  const handleCopyRek = useCallback((alamat) => {
+  const handleCopyRek = alamat => {
     return navigator.clipboard.writeText(alamat)
-  }, [])
+  }
 
   return (
     <div className='background-overlay fixed z-10 inset-0 overflow-hidden flex items-center justify-center py-8 px-4'>
@@ -43,6 +43,6 @@ const KirimHadiah = memo(({ isOpen, setIsOpen }) => {
       </div>
     </div>
   )
-})
+}
 
 export default KirimHadiah

@@ -4,8 +4,9 @@ import {
   SectionQuotes,
   SectionGroom,
   SectionLocations,
-  SectionGift,
+  // SectionGift,
   SectionPhotos,
+  SectionCountdown,
 } from './components';
 
 import './App.css';
@@ -15,6 +16,8 @@ function App() {
     <div className="App">
       {/* section background wedding invitation */}
       <SectionBackground />
+
+      <SectionCountdown />
       {/* section pearl words */}
       <SectionQuotes />
       {/* section groom and bride */}
@@ -23,8 +26,9 @@ function App() {
       <SectionLocations />
       {/* section photos */}
       <SectionPhotos />
+
       {/* section send gift */}
-      <SectionGift />
+      {/* <SectionGift /> */}
     </div>
   );
 }

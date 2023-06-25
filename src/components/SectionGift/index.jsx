@@ -1,4 +1,4 @@
-import React, { useState , useEffect, useCallback, useMemo } from 'react'
+import React, { useState , useEffect } from 'react'
 import KirimDana from './KirimDana';
 import KirimHadiah from './KirimHadiah';
 import KirimPesan from './KirimPesan';
@@ -9,59 +9,58 @@ const SectionGift = () => {
     dana: false,
     hadiah: false
   })
-  const [expiryTime, setExpiryTime] = useState("8 jul 2023 09:00:00");
-  const [countdownTime, setCountdownTime]= useState({
-    days: '',
-    hours: '',
-    minutes: '',
-    seconds: ''
-  })
-
-  const countdown = useMemo(() => ({
-    days: countdownTime.days,
-    hours: countdownTime.hours,
-    minutes: countdownTime.minutes,
-    seconds: countdownTime.seconds
-  }), [countdownTime.days, countdownTime.hours, countdownTime.minutes, countdownTime.seconds])
-
-  const handlePesan = useCallback(() => setIsOpen({...isOpen, pesan: true}), [isOpen])
-  const handleDana = useCallback(() => setIsOpen({...isOpen, dana: true}), [isOpen])
-  const handleHadiah = useCallback(() => setIsOpen({...isOpen, hadiah: true}), [isOpen])
-    
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      const countdownDateTime = new Date(expiryTime).getTime(); 
-      const currentTime = new Date().getTime();
-      const remainingDayTime = countdownDateTime - currentTime;
-      const totalDays = Math.floor(remainingDayTime / (1000 * 60 * 60 * 24));
-      const totalHours = Math.floor((remainingDayTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const totalMinutes = Math.floor((remainingDayTime % (1000 * 60 * 60)) / (1000 * 60));
-      const totalSeconds = Math.floor((remainingDayTime % (1000 * 60)) / 1000);
   
-      const runningCountdownTime={
-          days: totalDays,
-          hours: totalHours,
-          minutes: totalMinutes,
-          seconds: totalSeconds
+  const calculateTimeLeft = () => {
+    const end = "8 jul 2023 09:00:00"
+    // const test = "26 jun 2023 02:56:00"
+    const difference = +new Date(end) - +new Date().getTime();
+  
+    let timeLeft = {}
+  
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
       }
-      
-      setCountdownTime(runningCountdownTime);
+    } 
+    
+    return timeLeft
+  }
+  
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
-      if(remainingDayTime < 0) {
-        clearInterval(timeInterval);
-        setCountdownTime({
-          days: "00",
-          hours: "00",
-          minutes: "00",
-          seconds: "00"
-        });
-        setExpiryTime(false);
-      }
-
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
     }, 1000)
 
-    return () => clearInterval(timeInterval)
-  }, [countdown, expiryTime]);
+    return () => clearTimeout(timer);
+  })
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach((interval, index) => {
+    if (!timeLeft[interval]) {
+      return;
+    }
+  
+    timerComponents.push(
+      <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg" key={index}>
+        <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
+          {timeLeft[interval]}
+        </h2>
+        <p className="xl:text-base sm:text-xs text-center font-bold text-white">{interval}</p>
+      </div>
+    );
+  });
+
+
+  const handlePesan = () => setIsOpen({...isOpen, pesan: true})
+  const handleDana = () => setIsOpen({...isOpen, dana: true})
+  const handleHadiah = () => setIsOpen({...isOpen, hadiah: true})
+  
 
   return (
     <section id="sectionGift">
@@ -79,32 +78,15 @@ const SectionGift = () => {
                 Ini adalah awal perjalanan kami untuk mewujudkan mimpi berdua.
               </p>
 
-              <div className="grid grid-cols-4 xl:gap-4 sm:gap-2 my-auto pt-12 xl:w-4/6 sm:w-full">
-                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
-                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
-                    {countdownTime.days}
-                  </h2>
-                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Days</p>
-                </div>
-                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
-                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
-                    {countdownTime.hours}
-                  </h2>
-                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Hours</p>
-                </div>
-                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
-                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
-                    {countdownTime.minutes}
-                  </h2>
-                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Minutes</p>
-                </div>
-                <div className="w-full bg-gray-500 xl:py-6 md:py-4 sm:py-2 px-2 rounded-lg">
-                  <h2 className="xl:text-6xl sm:text-4xl text-center text-white">
-                    {countdownTime.seconds}
-                  </h2>
-                  <p className="xl:text-base sm:text-xs text-center font-bold text-white">Seconds</p>
-                </div>
-              </div>
+                {timerComponents.length ? (
+                  <div className="grid grid-cols-4 xl:gap-4 sm:gap-2 my-auto pt-12 xl:w-4/6 sm:w-full">
+                    {timerComponents}
+                  </div>
+                ) : (
+                  <div className="text-center font-philosopher text-4xl font-bold text-red-500 p-4 m-auto w-full">
+                    Time's up !
+                  </div>
+                )  }
             </div>
           </div>
 
