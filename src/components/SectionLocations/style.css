@@ -3,20 +3,20 @@
   background-image: linear-gradient(180deg, rgba(232, 232, 232, 0.88) 0%, rgba(188, 180, 157, 0.88) 100%);
 }
 .myBackground2 {
-  background: url("/public/assets/Images/2.JPG");
+  background: url("https://firebasestorage.googleapis.com/v0/b/hajun-wedding.appspot.com/o/images%2F2.JPG?alt=media&token=1a98c7f8-16aa-49c6-95f9-2092cec7d8a4");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .myBackground3 {
   background-color: transparent;
-  background-image: url("/public/assets/Images/7.JPG");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/hajun-wedding.appspot.com/o/images%2F7.JPG?alt=media&token=c57dffb5-75bd-4f90-aa3c-49cf978d55cf");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .myBackground4 {
-  background: url("/public/assets/Images/8.JPG");
+  background: url("https://firebasestorage.googleapis.com/v0/b/hajun-wedding.appspot.com/o/images%2F8.JPG?alt=media&token=8cbd6adf-eec3-4e01-98fd-80ec006b82ea");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

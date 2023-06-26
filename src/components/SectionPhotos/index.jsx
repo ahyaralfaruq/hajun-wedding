@@ -1,10 +1,22 @@
-import React from 'react'
-import ImagesData from "../../utils/images"
-// import { LazyLoadImage } from 'react-lazy-load-image-component'
+import React, { useEffect, useState } from 'react'
+import { dbFirebase } from '../../config/firebase-config'
+import {ref, listAll, getDownloadURL } from 'firebase/storage'
 
-// import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const SectionPhotos = () => {
+  const [imageList,setImageList] = useState([])
+  const imgRef = ref(dbFirebase, "images/")
+
+  useEffect(() => {
+    listAll(imgRef).then((res) => {
+      res.items.forEach(item => {
+        getDownloadURL(item).then(url => {
+          // console.log(url)
+          setImageList(prev => [...prev, url])
+        })
+      })
+    })
+  }, [])
 
   return (
     <section id="sectionAlbum">
@@ -13,10 +25,9 @@ const SectionPhotos = () => {
 
         <div className="grid xl:grid-cols-4 xl:gap-4 md:grid-cols-3 sm:grid-cols-2 sm:gap-4">
           {
-            ImagesData.map( res => (
-              // <LazyLoadImage src={res.src} alt="gambar" className="w-full overflow-hidden rounded-md" effect='blur' key={res.id} />
-              <div className="w-full overflow-hidden rounded-md" key={res.id}>
-                <img src={`https://cdn.idntimes.com/content-images/post/20191210/jsn-pdog-42947568-282194115763661-2521936807464296586-n-ed11ed21598eaed912b615847cfe16bd_600x400.jpg`} alt="gambar" className='w-full object-cover' />
+            imageList.map((res, i) => (
+              <div className="w-full overflow-hidden rounded-md" key={i}>
+                <img src={res} alt="gambar" className='w-full object-cover' />
               </div>
             ))
           }

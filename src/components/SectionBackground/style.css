@@ -1,5 +1,5 @@
 .myBackground {
-  background: url("/public/assets/Images/background.JPG");
+  background: url("https://firebasestorage.googleapis.com/v0/b/hajun-wedding.appspot.com/o/images%2Fbackground.JPG?alt=media&token=a4b66263-aa43-431a-bf81-6916ef5bb19a");
   background-position: center center;
   background-size: cover;
 }

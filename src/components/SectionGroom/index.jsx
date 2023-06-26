@@ -20,7 +20,7 @@ const SectionGroom = () => {
           >
             <div className="relative w-60 h-60">
               <div className="absolute w-full h-full top-0 left-0 rounded-full overflow-hidden">
-                <img src="/assets/images/groom.JPG" alt="gambar" className='w-full h-full object-cover' />
+                <img src="https://firebasestorage.googleapis.com/v0/b/hajun-wedding.appspot.com/o/images%2Fgroom.JPG?alt=media&token=e7c726aa-1def-48c7-8c99-bcd9c7d16fd0" alt="gambar" className='w-full h-full object-cover' />
               </div>
             </div>
             <div className="py-6">
@@ -47,7 +47,7 @@ const SectionGroom = () => {
           >
             <div className="relative w-60 h-60">
               <div className="absolute w-full h-full top-0 left-0 rounded-full overflow-hidden">
-                <img src="/assets/images/bride.JPG" alt="gambar" className='w-full h-full object-cover' />
+                <img src="https://firebasestorage.googleapis.com/v0/b/hajun-wedding.appspot.com/o/images%2Fbride.JPG?alt=media&token=96c49148-cdcb-4892-a03e-c6eb049d12bf " alt="gambar" className='w-full h-full object-cover' />
               </div>
             </div>
             <div className="py-6">
