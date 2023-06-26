@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { dbFirebase } from '../../config/firebase-config'
 import {ref, listAll, getDownloadURL } from 'firebase/storage'
 
@@ -7,7 +7,7 @@ const SectionPhotos = () => {
   const [imageList,setImageList] = useState([])
   const imgRef = ref(dbFirebase, "images/")
 
-  useEffect(() => {
+  useMemo(() => {
     listAll(imgRef).then((res) => {
       res.items.forEach(item => {
         getDownloadURL(item).then(url => {
