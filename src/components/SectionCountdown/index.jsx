@@ -3,7 +3,7 @@ import KirimPesan from '../SectionGift/KirimPesan';
 
 const SectionCountdown = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [expire, setExpire] = useState("8 jul 2023 09:00:00")
+  const [expire, setExpire] = useState("8 jul 2023 9:00:00")
   const [countdownTime, setCountdownTime]= useState({
     days: '',
     hours: '',
@@ -86,7 +86,7 @@ const SectionCountdown = () => {
               </div>
 
               {
-                (countdownTime.days || countdownTime.hours || countdownTime.minutes || countdownTime.seconds) && (
+                expire && (
                   <>
                     <button
                       onClick={() => setIsOpen(true)}
